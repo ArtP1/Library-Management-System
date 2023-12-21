@@ -23,7 +23,7 @@ bool Book:: setAuthor(string new_author) {
     this->author = new_author;
     return true;
   } catch(const char* errMsg) {
-    cout << errMsg << endl;
+    cerr << errMsg << endl;
     return false;
   }
 }
@@ -75,7 +75,7 @@ bool Book:: setIsbn(string new_isbn) {
     return true;
     
   } catch(const char* errMsg) {
-    cout << errMsg << endl;
+    cerr << errMsg << endl;
     return false;
   }
 }
@@ -91,7 +91,7 @@ bool Book:: setYearPublished(int year_published) {
     return true;
     
   } catch(const char* errMsg) {
-    cout << errMsg << endl;
+    cerr << errMsg << endl;
     return false;
   }
 }

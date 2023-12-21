@@ -53,3 +53,7 @@ void Shelf:: listBooks() {
     cout << "Book: " << book.getTitle() << " - Count: " << count << endl << endl;
   }
 }
+
+bool Shelf:: operator == (const Shelf& sh) const {
+  return this->shelf_num == sh.getShelfNumber() && this->subject == sh.getSubject();
+}

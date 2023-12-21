@@ -25,10 +25,21 @@ class Shelf {
     void removeBook(const Book& target_book);
     void listBooks();
 
+    bool operator == (const Shelf& sh) const;
   private:
     int shelf_num;
     string subject;
     unordered_map<Book, int> books;
 };
+
+namespace std {
+    template <>
+    struct hash<Shelf> {
+      size_t operator()(const Shelf& sh) const {
+        return (hash<int>()(sh.getShelfNumber())) ^ (hash<string>()(sh.getSubject()) << 1);
+      }
+    };
+}
+
 
 #endif
