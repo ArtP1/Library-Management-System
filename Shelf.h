@@ -23,8 +23,9 @@ class Shelf {
     // other(s)
     void addBook(const Book& new_book);
     void removeBook(const Book& target_book);
-    void listBooks();
-
+    void registerCheckedOutBook(const Book& target_book);
+    void listShelfBooks();
+    
     bool operator == (const Shelf& sh) const;
   private:
     int shelf_num;

@@ -1,4 +1,7 @@
 #include "Shelf.h"
+Shelf:: Shelf() {
+
+}
 
 Shelf:: Shelf(int shelf_num, string subject) {
   setShelfNumber(shelf_num);
@@ -34,23 +37,38 @@ void Shelf:: addBook(const Book &new_book) {
 void Shelf:: removeBook(const Book& target_book) {
   int book_count = getBookCount(target_book);
 
-  if(book_count > 1) {
+  if(book_count >= 1) {
     books[target_book] = book_count - 1;
-    cout << "Removed a copy of \"" << target_book.getTitle() <<  "\" from the shelf." << endl << endl;
+    cout << "Successfully removed a copy of \"" << target_book.getTitle() <<  "\" from the shelf." << endl << endl;
   } else {
     books.erase(target_book);
     cout << "Book removed from the shelf." << endl << endl;
   }
 }
 
-// function that outputs all of the books within a shelf
-void Shelf:: listBooks() {
-  cout << "Books from the \"" << subject << "\" shelf include: \n";
-  for(const auto& pair : books) {
-    const Book& book = pair.first;
-    int count = pair.second;
+void Shelf:: registerCheckedOutBook(const Book& target_book) {
+  int book_count = getBookCount(target_book);
 
-    cout << "Book: " << book.getTitle() << " - Count: " << count << endl << endl;
+  if(book_count >= 1) {
+    books[target_book] = book_count - 1;
+    cout << "Successfully registered checked out book!" << endl << endl;
+  } else {
+    cerr << "Book is not available." << endl << endl;
+  }
+}
+
+
+
+// function that outputs the shelf within a shelf
+void Shelf:: listShelfBooks() {
+  if(!books.empty()) {
+    cout << "Books from the \"" << subject << "\" shelf include: \n";
+    for(const auto& pair : books) {
+      const Book& book = pair.first;
+      int count = pair.second;
+
+      book.printBook();
+    }
   }
 }
 

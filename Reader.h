@@ -10,7 +10,8 @@ class Reader {
     public:
         // constructor(s)
         Reader();
-        Reader(int card_num, string name, string phone);
+        Reader(string name, string phone);
+        Reader(int card_num, string phone);
 
         // setters & getters
         int getCardNum() const {return card_num;}
@@ -27,13 +28,15 @@ class Reader {
         void checkOutBook(Book& new_book);
         void returnBook(Book& target_book);
         bool hasBook(Book& target_book);
-        
+
+        bool operator == (const Reader& other) const;        
     private:
         int card_num;
         string name;
         string phone;
         vector<Book> books;
-        const int max_books = 5;
+        int max_books = 5;
+        static int generateUniqueCardNumber();
 };
 
 #endif

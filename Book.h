@@ -17,17 +17,14 @@ class Book {
     string getIsbn() const {return isbn;}
     string getGenre() const {return genre;}
     bool getAvailability() const {return available;}
-    void setTitle(string new_title) {this->title = new_title;}
-    bool setAuthor(string new_author);
-    bool setYearPublished(int year_published);
-    bool setIsbn(string new_isbn);
-    void setGenre(string new_genre) {this->genre = new_genre;}
+    void setTitle(const string new_title) {this->title = new_title;}
+    bool setAuthor(const string new_author);
+    bool setYearPublished(const int year_published);
+    bool setIsbn(const string new_isbn);
+    void setGenre(const string new_genre) {this->genre = new_genre;}
     void setAvailability(bool isAvailable) {this->available = isAvailable;}
-
+    void printBook() const;
     // other(s)
-    void returnBook();
-    void borrowBook();
-    
     bool operator == (const Book& b) const;
   private:
     string title;

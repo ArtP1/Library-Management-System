@@ -1,9 +1,14 @@
 #include "Reader.h"
 #include <algorithm>
 
-Reader:: Reader(int card_num, string name, string phone) {
-    setCardNum(card_num);
+Reader:: Reader(string name, string phone) {
+    this->card_num = generateUniqueCardNumber();
     setName(name);
+    setPhone(phone);
+}
+
+Reader:: Reader(int card_num, string phone) {
+    setCardNum(card_num);
     setPhone(phone);
 }
 
@@ -45,4 +50,13 @@ bool Reader:: hasBook(Book& target_book) {
     }
 
     return false;
+}
+
+int Reader::  generateUniqueCardNumber() {
+    static int nextCardNumber = 1000; 
+    return ++nextCardNumber; 
+}
+
+bool Reader:: operator == (const Reader& other) const {
+    return this->card_num == other.getCardNum() && this->phone == other.getPhone();
 }
