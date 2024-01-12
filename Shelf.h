@@ -21,8 +21,9 @@ class Shelf {
     
 
     // other(s)
+    bool hasBook(const Book& target_book) const {return books.find(target_book) != books.end();}
     void addBook(const Book& new_book);
-    void removeBook(const Book& target_book);
+    bool removeBook(const Book& target_book);
     void registerCheckedOutBook(const Book& target_book);
     void listShelfBooks();
     

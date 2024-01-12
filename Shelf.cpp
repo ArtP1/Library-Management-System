@@ -34,16 +34,18 @@ void Shelf:: addBook(const Book &new_book) {
 }
 
 // function that removes a book from a shelf
-void Shelf:: removeBook(const Book& target_book) {
+bool Shelf:: removeBook(const Book& target_book) {
   int book_count = getBookCount(target_book);
 
   if(book_count >= 1) {
     books[target_book] = book_count - 1;
     cout << "Successfully removed a copy of \"" << target_book.getTitle() <<  "\" from the shelf." << endl << endl;
-  } else {
-    books.erase(target_book);
-    cout << "Book removed from the shelf." << endl << endl;
+    return true;
   }
+
+  books.erase(target_book);
+  cout << "Book removed from the shelf." << endl << endl;
+  return false;
 }
 
 void Shelf:: registerCheckedOutBook(const Book& target_book) {

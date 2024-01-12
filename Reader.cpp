@@ -1,6 +1,9 @@
 #include "Reader.h"
 #include <algorithm>
 
+Reader:: Reader() {
+
+}
 Reader:: Reader(string name, string phone) {
     this->card_num = generateUniqueCardNumber();
     setName(name);
@@ -52,7 +55,7 @@ bool Reader:: hasBook(Book& target_book) {
     return false;
 }
 
-int Reader::  generateUniqueCardNumber() {
+int Reader:: generateUniqueCardNumber() {
     static int nextCardNumber = 1000; 
     return ++nextCardNumber; 
 }
